@@ -6,10 +6,6 @@ export function StyleSelector() {
 
   return (
     <div className="flex flex-col gap-3">
-      <label className="text-xs font-medium text-neutral-500 uppercase tracking-wider">
-        Style
-      </label>
-
       <div className="p-2.5 rounded-lg border-2 border-neutral-900 dark:border-white bg-neutral-50 dark:bg-neutral-800">
         <div
           className="w-full h-7 rounded-sm mb-1.5"

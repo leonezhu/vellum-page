@@ -53,11 +53,11 @@ export function ExportToolbar({ cardRef, cardWidth, cardHeight, zoom, setZoom }:
   };
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-1.5">
       <select
         value={scale}
         onChange={(e) => setScale(Number(e.target.value))}
-        className="px-2 py-1.5 text-xs border border-neutral-200 dark:border-neutral-700 rounded bg-white dark:bg-neutral-800"
+        className="px-1.5 py-1 text-xs border border-neutral-200 dark:border-neutral-700 rounded bg-white dark:bg-neutral-800"
       >
         <option value={1}>1x</option>
         <option value={2}>2x</option>
@@ -65,16 +65,16 @@ export function ExportToolbar({ cardRef, cardWidth, cardHeight, zoom, setZoom }:
       </select>
       <button
         onClick={handleCopyHTML}
-        className="px-3 py-1.5 text-xs font-medium border border-neutral-200 dark:border-neutral-700 rounded hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors"
+        className="px-2 py-1 text-xs font-medium border border-neutral-200 dark:border-neutral-700 rounded hover:bg-neutral-50 dark:hover:bg-neutral-800 transition-colors hidden sm:inline-block"
       >
-        {copied === 'html' ? 'Copied!' : 'Copy HTML'}
+        {copied === 'html' ? 'Copied!' : 'Copy'}
       </button>
       <button
         onClick={handleExport}
         disabled={exporting || !cardRef.current}
-        className="px-3 py-1.5 text-xs font-medium bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 rounded hover:opacity-90 disabled:opacity-50 transition-opacity"
+        className="px-2.5 py-1 text-xs font-medium bg-neutral-900 text-white dark:bg-white dark:text-neutral-900 rounded hover:opacity-90 disabled:opacity-50 transition-opacity"
       >
-        {exporting ? 'Exporting...' : 'Export PNG'}
+        {exporting ? '...' : 'PNG'}
       </button>
     </div>
   );

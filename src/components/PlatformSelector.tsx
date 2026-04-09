@@ -6,9 +6,6 @@ export function PlatformSelector() {
 
   return (
     <div className="flex flex-col gap-3">
-      <label className="text-xs font-medium text-neutral-500 uppercase tracking-wider">
-        Platform
-      </label>
       <div className="grid grid-cols-3 gap-1.5">
         {platforms.map((p) => (
           <button

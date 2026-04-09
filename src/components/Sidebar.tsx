@@ -36,7 +36,7 @@ interface SidebarProps {
 
 export function Sidebar({ children }: SidebarProps) {
   return (
-    <aside className="w-80 border-r border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 overflow-y-auto p-4 flex flex-col gap-5 shrink-0">
+    <aside className="w-80 h-full border-r border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950 overflow-y-auto p-4 flex flex-col gap-5 shrink-0 pt-16 lg:pt-4">
       {children}
     </aside>
   );

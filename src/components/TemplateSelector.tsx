@@ -7,9 +7,6 @@ export function TemplateSelector() {
 
   return (
     <div className="flex flex-col gap-3">
-      <label className="text-xs font-medium text-neutral-500 uppercase tracking-wider">
-        Layout
-      </label>
       <div className="grid grid-cols-5 gap-2">
         {templates.map((t) => (
           <button
