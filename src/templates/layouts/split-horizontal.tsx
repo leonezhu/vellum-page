@@ -1,6 +1,7 @@
 import type { CardData, DesignTokens, PlatformPreset } from '../../types/card';
 import { buildCardBase, buildCaptionStyle, buildTagStyle, getFullText, buildFillTextStyle, renderParagraphs, DecorationOverlay, type CardStyleContext } from './cssBuilder';
 import { fitTextToArea } from '../../lib/truncateText';
+import { useEditorStore } from '../../store/editorStore';
 
 interface TemplateProps {
   data: CardData;
@@ -13,6 +14,7 @@ export function SplitHorizontalTemplate({ data, tokens, preset }: TemplateProps)
   const padding = Math.round(preset.width * 0.06);
   const contentWidth = preset.width * 0.48;
   const allText = getFullText(data);
+  const { brandMark } = useEditorStore();
 
   const hasMetadata = !!(data.author || data.date);
   const metadataHeight = hasMetadata ? padding * 2 : 0;
@@ -105,7 +107,7 @@ export function SplitHorizontalTemplate({ data, tokens, preset }: TemplateProps)
             textTransform: 'uppercase',
             writingMode: 'vertical-rl',
           }}>
-            Vellum Page
+            {brandMark || tokens.styleName}
           </div>
         </div>
       </div>

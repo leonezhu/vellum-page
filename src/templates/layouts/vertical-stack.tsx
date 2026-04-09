@@ -1,6 +1,7 @@
 import type { CardData, DesignTokens, PlatformPreset } from '../../types/card';
 import { buildCardBase, buildCaptionStyle, buildTagStyle, getFullText, buildFillTextStyle, renderParagraphs, DecorationOverlay, type CardStyleContext } from './cssBuilder';
 import { fitTextToArea } from '../../lib/truncateText';
+import { useEditorStore } from '../../store/editorStore';
 
 interface TemplateProps {
   data: CardData;
@@ -13,6 +14,7 @@ export function VerticalStackTemplate({ data, tokens, preset }: TemplateProps) {
   const padding = Math.round(preset.width * 0.07);
   const contentWidth = preset.width - padding * 2;
   const allText = getFullText(data);
+  const { brandMark } = useEditorStore();
 
   const headerHeight = padding * 2;
   const footerHeight = padding * 2;
@@ -42,7 +44,7 @@ export function VerticalStackTemplate({ data, tokens, preset }: TemplateProps) {
           fontWeight: 600,
           color: tokens.colors.textMuted,
         }}>
-          Vellum Page
+          {brandMark || tokens.styleName}
         </div>
         {data.date && (
           <div style={{ ...buildCaptionStyle(ctx) }}>

@@ -2,7 +2,7 @@ import { useEditorStore } from '../store/editorStore';
 import { parseArticle } from '../lib/parseArticle';
 
 export function ContentInput() {
-  const { cardData, setCardData } = useEditorStore();
+  const { cardData, setCardData, brandMark, setBrandMark } = useEditorStore();
 
   const handleTextChange = (text: string) => {
     if (text.length === 0) {
@@ -52,6 +52,15 @@ export function ContentInput() {
           Options
         </summary>
         <div className="grid grid-cols-2 gap-2 mt-2">
+          <div className="col-span-2">
+            <label className="text-[10px] text-neutral-400 uppercase tracking-wider mb-1 block">Brand Mark</label>
+            <input
+              className="w-full p-2 text-sm border border-neutral-200 dark:border-neutral-700 rounded bg-white dark:bg-neutral-800 focus:outline-none focus:ring-2 focus:ring-neutral-400"
+              placeholder="Shown on card (e.g. your brand name)"
+              value={brandMark}
+              onChange={(e) => setBrandMark(e.target.value)}
+            />
+          </div>
           <div>
             <label className="text-[10px] text-neutral-400 uppercase tracking-wider mb-1 block">Title (optional)</label>
             <input

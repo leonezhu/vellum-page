@@ -1,6 +1,7 @@
 import type { CardData, DesignTokens, PlatformPreset } from '../../types/card';
 import { buildCardBase, buildCaptionStyle, getFullText, buildFillTextStyle, renderParagraphs, DecorationOverlay, type CardStyleContext } from './cssBuilder';
 import { fitTextToArea } from '../../lib/truncateText';
+import { useEditorStore } from '../../store/editorStore';
 
 interface TemplateProps {
   data: CardData;
@@ -13,6 +14,7 @@ export function MinimalTemplate({ data, tokens, preset }: TemplateProps) {
   const padding = Math.round(preset.width * 0.1);
   const contentWidth = (preset.width - padding * 2) * 0.85;
   const allText = getFullText(data);
+  const { brandMark } = useEditorStore();
 
   const chromeHeight = padding * 4.5; // label + dot + separator + author
   const availableHeight = preset.height - padding * 2 - chromeHeight;
@@ -44,7 +46,7 @@ export function MinimalTemplate({ data, tokens, preset }: TemplateProps) {
           fontFamily: `"JetBrains Mono", ui-monospace, Consolas, monospace`,
           fontSize: `${Math.round(parseInt(tokens.typography.captionSize) * 0.85)}px`,
         }}>
-          {data.tags && data.tags.length > 0 ? data.tags[0] : 'Vellum Page'}
+          {data.tags && data.tags.length > 0 ? data.tags[0] : (brandMark || 'Article')}
         </div>
 
         {/* Accent dot */}

@@ -15,6 +15,7 @@ interface PersistedState {
   colorMode: ColorMode;
   selectedPlatformId: string;
   selectedTemplateId: TemplateId;
+  brandMark: string;
 }
 
 function loadState(): Partial<PersistedState> {
@@ -39,6 +40,7 @@ interface EditorState extends PersistedState {
   setColorMode: (mode: ColorMode) => void;
   setPlatform: (presetId: string) => void;
   setTemplate: (templateId: TemplateId) => void;
+  setBrandMark: (mark: string) => void;
   getPlatform: () => PlatformPreset;
   getTokens: () => DesignTokens;
 }
@@ -55,6 +57,7 @@ export const useEditorStore = create<EditorState>((set, get) => ({
   colorMode: saved.colorMode ?? 'dark',
   selectedPlatformId: saved.selectedPlatformId ?? 'twitter-16-9',
   selectedTemplateId: saved.selectedTemplateId ?? 'centered',
+  brandMark: saved.brandMark ?? '',
 
   setCardData: (data) =>
     set((state) => {
@@ -81,6 +84,11 @@ export const useEditorStore = create<EditorState>((set, get) => ({
   setTemplate: (templateId) => {
     set({ selectedTemplateId: templateId });
     saveState({ ...get(), selectedTemplateId: templateId });
+  },
+
+  setBrandMark: (mark) => {
+    set({ brandMark: mark });
+    saveState({ ...get(), brandMark: mark });
   },
 
   getPlatform: () => {
